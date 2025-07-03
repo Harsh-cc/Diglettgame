@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <style>
+            *{
+    margin:0;
+    padding:0;
+}
+.score{
+    height:80px;
+    width:200px;
+    color:#fff;
+    position:fixed;
+    top:0;
+    margin-top:10px;
+    background-color:#000;
+    font-size:x-large;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    border-radius:4px;
+}
+body {
+    height:100vh;
+    width:100vw;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:grey;
+}
+.gameArea{
+    height:400px;
+    width:400px;
+    background-color:#5b3e21;
+    transform:rotateX(40deg);
+}
+.hole{
+    height:100px;
+    width:100px;
+    border-radius:100%;
+    background-color:#4c3228;
+    display:inline-block;
+    margin:7px;
+    border:5px solid #5b3e21;
+    transform:rotateX(20deg);
+    overflow-y:hidden;
+    box-shadow: 4px 4px 8px #000 inset, -4px -4px 8px #757575 inset;
+}
+img{
+    height:160px;
+    width:100px;
+    position:relative;
+    bottom:-90px;
+    animation:move 0.4s alternate infinite;
+    display:none;
+}
+@keyframes move{
+    from{
+        bottom:-160px;
+    }
+    to{
+       bottom:20px;
+    } 
+}
+.time{
+    height:8px;
+    width:100vw;
+    background-color:lightgreen;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.time2{
+    height:8px;
+    width:100vw;
+    background-color:orange;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.restart{
+    height:80px;
+    width:200px;
+    color:#fff;
+    position:fixed;
+    top:calc(100vh/2-40);
+    margin-top:10px;
+    background-color:#000;
+    font-size:x-large;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    border-radius:4px;
+}
+#img1:hover{
+    opacity:50%;
+}
+#img2:hover{
+    opacity:50%;
+}
+#img3:hover{
+    opacity:50%;
+}
+#img4:hover{
+    opacity:50%;
+}
+#img5:hover{
+    opacity:50%;
+}
+#img6:hover{
+    opacity:50%;
+}
+#img7:hover{
+    opacity:50%;
+}
+#img8:hover{
+    opacity:50%;
+}
+#img9:hover{
+    opacity:50%;
+}
+#img10:hover{
+    opacity:50%;
+}
+#plus{
+    color:lightgreen;
+    position:fixed;
+    top:110px;
+    font-weight:bold;
+    font-size:x-large;
+    animation:up 0.4s linear infinite;
+    display:none;
+}
+@keyframes up{
+    from{
+        top:110px;
+        opacity:0.1;
+        
+    }
+    to {
+        top:90px;
+        opacity:1;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <div class="time2">
+            <div id="time" class="time"></div>
+        </div>
+        <div id="plus">+5</div>
+        <div class="score" id="score">Score : 0</div>
+        <div class="restart" id="restart" onclick ="restart()">Restart</div>
+        <div class="gameArea" id="g_era">
+         <div class="hole" id="h1">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img1" onclick="score()">
+         </div>
+         <div class="hole" id="h2">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img2" onclick="score()">
+         </div>
+         <div class="hole" id="h3">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img3" onclick="score()">
+         </div>
+         <div class="g1"></div>
+         <div class="hole" id="h4">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img4" onclick="score()">
+         </div>
+         <div class="hole" id="h5">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img5" onclick="score()">
+         </div>
+         <div class="hole" id="h6">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img6" onclick="score()">
+         </div>
+         <div class="g2"></div>
+         <div class="hole" id="h7">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img7" onclick="score()">
+         </div>
+         <div class="hole" id="h8">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img8" onclick="score()">
+         </div>
+         <div class="hole" id="h9">
+             <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/050.png" id="img9" onclick="score()">
+         </div>
+        </div>
+        <script>
+            alert("try to catch diglett\n Hope you enjoy ^_^")
+var a =0;
+var tm = 100;
+function restart(){
+    document.getElementById("g_era").style.display ="block";
+document.getElementById("restart").style.display ="none";
+//document.getElementsByClassName("hole").style.display = "inline-block";
+document.getElementById("score").innerHTML ="Score : 0";
+
+    tm = 100;
+    a = 0;
+}
+window.onload = ()=>{
+var alive = true;
+function finish(){
+    document.getElementById("g_era").style.display = "none";
+document.getElementById("restart").style.display = "flex";
+}
+function dissapear(a){
+    document.getElementById("img"+a).style.display = "none";
+
+}
+function appear(){
+   var num = Math.floor(Math.random()*9);
+  //var num = 0;
+    if(num == 0){
+        num = 2;
+    }
+    document.getElementById("img"+num).style.display ="block";
+var start = 0;
+//if(start == 0){
+    
+setTimeout(dissapear,800,num);
+//}
+//start +=1;
+}
+setInterval(appear,800/2.5);
+//appear();
+//const a = document.getElementsByClassName("c").onclick = function (){score()};
+function time(){
+    document.getElementById("time").style.width = tm +"vw";
+    if(tm>=0){
+        tm-=0.01;
+    }else{
+    tm = 0;
+    finish();
+    }
+}
+setInterval(time,10);
+}
+function up_date(){
+    document.getElementById("plus").style.display = "none";
+}
+function score(){
+//alert("hi");
+a+=5;
+document.getElementById("score").innerHTML ="Score : "+a;
+document.getElementById("plus").style.display = "block";
+setTimeout(up_date,800);
+}
+        </script>
+    </body>
+</html>
